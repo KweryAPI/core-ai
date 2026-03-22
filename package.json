@@ -24,7 +24,16 @@
     "prepublish:check": "bash scripts/prepublish-check.sh",
     "prepublish:check:live": "bash scripts/prepublish-check.sh",
     "release": "pnpm changeset publish",
-    "version": "pnpm changeset version"
+    "version": "pnpm changeset version",
+    "security:check": "bash scripts/security-check.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KweryAPI/core-ai.git"
+  },
+  "homepage": "https://kwery.xyz",
+  "bugs": {
+    "url": "https://github.com/KweryAPI/core-ai/issues"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.6.0",
