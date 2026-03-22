@@ -1,0 +1,40 @@
+{
+  "name": "kwery-agents",
+  "private": true,
+  "workspaces": [
+    "kwery-mcp",
+    "kwery-cli"
+  ],
+  "scripts": {
+    "build": "pnpm -r build",
+    "dev": "pnpm -r dev",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "test:coverage": "pnpm -r test:coverage",
+    "test:smoke": "cd kwery-mcp && pnpm vitest run --config vitest.smoke.config.ts",
+    "smoke:cli": "node scripts/smoke-cli.mjs",
+    "fixtures:update": "node scripts/update-fixtures.mjs",
+    "test:structure": "vitest run --config vitest.config.ts",
+    "test:structure:watch": "vitest --config vitest.config.ts",
+    "test:install": "bash scripts/test-install-scripts.sh",
+    "clean": "pnpm -r clean",
+    "test:all": "bash scripts/test-all.sh",
+    "test:all:smoke": "bash scripts/test-all.sh --smoke",
+    "test:all:full": "bash scripts/test-all.sh --full",
+    "prepublish:check": "bash scripts/prepublish-check.sh",
+    "prepublish:check:live": "bash scripts/prepublish-check.sh",
+    "release": "pnpm changeset publish",
+    "version": "pnpm changeset version"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.6.0",
+    "@changesets/cli": "^2.30.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.6.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@9.0.0"
+}

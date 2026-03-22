@@ -1,0 +1,25 @@
+{
+  "data": [
+    {
+      "timestamp": "2026-03-22T12:00:00+00:00",
+      "symbol": "BTC",
+      "source": "binance",
+      "interval": "1h",
+      "buy_volume": 0.01312,
+      "sell_volume": 0.00257,
+      "num_buys": 20,
+      "num_sells": 5,
+      "vwap_buy": 68413.8828201219,
+      "vwap_sell": 68584.3485992218,
+      "net_volume": 0.01055,
+      "buy_ratio": 0.836201
+    }
+  ],
+  "meta": {
+    "symbol": "BTC",
+    "source": "binance",
+    "interval": "1h",
+    "count": 1,
+    "next_cursor": "eyJvZmZzZXQiOiAxfQ=="
+  }
+}

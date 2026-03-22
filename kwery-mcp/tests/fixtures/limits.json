@@ -1,0 +1,30 @@
+{
+  "plan": "business",
+  "max_rows_per_request": 2500,
+  "max_history_days": 90,
+  "credits": {
+    "used": 46102,
+    "limit": 50000000,
+    "remaining": 49953898
+  },
+  "rate_limits": {
+    "requests_per_second": 20,
+    "requests_per_minute": 600
+  },
+  "features": {
+    "orderbook_snapshots": true,
+    "binance_1s_ticker": true,
+    "kalshi_orderbook": true,
+    "snapshots_500ms": true,
+    "trade_ticks": true
+  },
+  "snapshot_history": {
+    "s500ms": null,
+    "s1": null,
+    "m5": null,
+    "m15": null,
+    "h1": null,
+    "h4": null,
+    "h24": null
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "timestamp": "2026-03-14T04:00:00+00:00",
+      "symbol": "BTC",
+      "source": "polymarket",
+      "interval": "1h",
+      "open": 0.999,
+      "high": 0.999,
+      "low": 0.999,
+      "close": 0.999,
+      "volume": 111443.8908769999,
+      "condition_id": "0xf3bed308604c0e168593064da48254f23d7df8f7d5b55cfacade5752e551a103",
+      "market_slug": "bitcoin-up-or-down-march-13-10pm-et",
+      "token_id": "58952037731224911549297388682164534541644257475220760664397387123595389322528",
+      "outcome": "Down",
+      "question": "Bitcoin Up or Down - March 13, 10PM ET"
+    }
+  ],
+  "meta": {
+    "symbol": "BTC",
+    "source": "polymarket",
+    "interval": "1h",
+    "count": 1,
+    "next_cursor": "eyJvZmZzZXQiOiAxfQ==",
+    "polymarket_note": "Multiple rows per timestamp = different instruments. Use token_id= for one series; market_id= for one condition."
+  }
+}

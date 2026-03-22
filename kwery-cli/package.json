@@ -1,0 +1,73 @@
+{
+  "name": "kwery-cli",
+  "version": "0.1.0",
+  "description": "CLI for Kwery — unified crypto and prediction market data across Polymarket, Kalshi, Hyperliquid, Binance, and Chainlink.",
+  "type": "module",
+  "bin": {
+    "kwery": "dist/index.js"
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "tsc && chmod +x dist/index.js",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "prepublishOnly": "pnpm typecheck && pnpm build && pnpm test"
+  },
+  "keywords": [
+    "cli",
+    "crypto",
+    "prediction-markets",
+    "polymarket",
+    "kalshi",
+    "hyperliquid",
+    "binance",
+    "chainlink",
+    "trading",
+    "quant",
+    "data",
+    "api"
+  ],
+  "author": {
+    "name": "Kwery",
+    "url": "https://kwery.xyz"
+  },
+  "license": "MIT",
+  "homepage": "https://kwery.xyz/docs/cli",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KweryAPI/kwery-agents.git",
+    "directory": "kwery-cli"
+  },
+  "bugs": {
+    "url": "https://github.com/KweryAPI/kwery-agents/issues"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "commander": "^12.0.0",
+    "chalk": "^5.3.0",
+    "ora": "^8.0.0",
+    "cli-table3": "^0.6.3",
+    "conf": "^12.0.0",
+    "papaparse": "^5.4.0",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "@types/node": "^20.0.0",
+    "@types/papaparse": "^5.3.0",
+    "vitest": "^1.6.0",
+    "@vitest/coverage-v8": "^1.6.0",
+    "msw": "^2.3.0",
+    "dotenv": "^16.0.0"
+  }
+}

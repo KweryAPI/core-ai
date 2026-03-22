@@ -1,0 +1,20 @@
+{
+  "symbol": "BTC",
+  "source": "hyperliquid",
+  "interval": "1h",
+  "candles": [
+    {
+      "time": "2026-03-22T12:00:00Z",
+      "open": 68174,
+      "high": 68717,
+      "low": 68141,
+      "close": 68579,
+      "volume": 1696.32299,
+      "funding_rate": -0.00001359,
+      "open_interest": 26802.09962
+    }
+  ],
+  "total": 302,
+  "limit": 1,
+  "offset": 0
+}

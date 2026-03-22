@@ -1,0 +1,12 @@
+{
+  "market_id": "0x440c3c38",
+  "slug": "btc-updown-1h-1710759600",
+  "source": "polymarket",
+  "question": "Bitcoin Up or Down - March 18, 8:00AM-9:00AM ET",
+  "condition_id": "0x440c3c38abb9b858d0ddf0224fdab458464cb086eb63f0328e9a307ea44338c4",
+  "clob_token_up": "50201615508519114013775924648710266518098335605837854880061537627958856103124",
+  "clob_token_down": "74135205791015421815610505351131766349619662506513010752637020753802149516162",
+  "active": true,
+  "created_at": "2024-03-18T12:00:00Z",
+  "updated_at": "2024-03-18T13:00:00Z"
+}

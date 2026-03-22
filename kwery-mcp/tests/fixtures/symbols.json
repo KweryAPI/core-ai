@@ -1,0 +1,89 @@
+{
+  "symbols": [
+    {
+      "symbol": "BTC",
+      "name": "Bitcoin",
+      "sources": [
+        "binance",
+        "binance_futures",
+        "chainlink",
+        "hyperliquid",
+        "polymarket",
+        "kalshi"
+      ],
+      "intervals": [
+        "1s",
+        "5m",
+        "15m",
+        "1h",
+        "4h",
+        "24h",
+        "1d"
+      ],
+      "earliest_data": "2024-01-15T00:00:00Z"
+    },
+    {
+      "symbol": "ETH",
+      "name": "Ethereum",
+      "sources": [
+        "binance",
+        "binance_futures",
+        "chainlink",
+        "hyperliquid",
+        "polymarket",
+        "kalshi"
+      ],
+      "intervals": [
+        "1s",
+        "5m",
+        "15m",
+        "1h",
+        "4h",
+        "24h",
+        "1d"
+      ],
+      "earliest_data": "2024-02-01T00:00:00Z"
+    },
+    {
+      "symbol": "SOL",
+      "name": "Solana",
+      "sources": [
+        "binance",
+        "binance_futures",
+        "chainlink",
+        "hyperliquid",
+        "polymarket",
+        "kalshi"
+      ],
+      "intervals": [
+        "1s",
+        "5m",
+        "15m",
+        "1h",
+        "4h",
+        "24h",
+        "1d"
+      ],
+      "earliest_data": "2024-02-01T00:00:00Z"
+    },
+    {
+      "symbol": "XRP",
+      "name": "XRP",
+      "sources": [
+        "binance",
+        "binance_futures",
+        "chainlink",
+        "hyperliquid"
+      ],
+      "intervals": [
+        "1s",
+        "5m",
+        "15m",
+        "1h",
+        "4h",
+        "1d"
+      ],
+      "earliest_data": "2024-02-01T00:00:00Z"
+    }
+  ]
+}

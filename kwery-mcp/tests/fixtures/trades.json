@@ -1,0 +1,26 @@
+{
+  "data": [
+    {
+      "timestamp": "2026-03-22T04:00:40+00:00",
+      "symbol": "BTC",
+      "source": "polymarket",
+      "trade_id": "5741748393448258_1774152040000_0_999_10_01",
+      "price": 0.999,
+      "size": 10.01,
+      "side": "SELL",
+      "maker_taker": "taker",
+      "market_id": "0xb59dbbed6a720e06bbe8d3eb85ace352969c16572fa3af9edd2f7b720683900d"
+    }
+  ],
+  "meta": {
+    "symbol": "BTC",
+    "source": "polymarket",
+    "interval": null,
+    "count": 1,
+    "next_cursor": "eyJvZmZzZXQiOiAxfQ==",
+    "clamped": null,
+    "clamped_reason": null,
+    "original_start": null,
+    "effective_start": null
+  }
+}

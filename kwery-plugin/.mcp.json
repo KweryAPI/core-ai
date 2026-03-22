@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "kwery": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "kwery-mcp"],
+      "env": {
+        "KWERY_API_KEY": "${KWERY_API_KEY}"
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "symbol": "BTC",
+  "prices": [
+    {
+      "time": "2026-03-22T13:35:00Z",
+      "ticker": "KXBTC15M-26MAR220945-45",
+      "yes_bid": 0.15,
+      "yes_ask": 0.16,
+      "no_bid": 0.84,
+      "no_ask": 0.85,
+      "spread": 0.010000000000000009,
+      "mid_price": 0.155,
+      "volume": 0,
+      "open_interest": 19576,
+      "taker_buy_ratio": null,
+      "imbalance": null,
+      "order_book": null,
+      "depth_metrics": null,
+      "interval": "5m"
+    }
+  ],
+  "total": 116456,
+  "limit": 1,
+  "offset": 0
+}

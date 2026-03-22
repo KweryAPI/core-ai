@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "timestamp": "2026-03-22T13:38:47.500000+00:00",
+      "symbol": "BTC",
+      "condition_id": "0x1e7e64623ec3925bbbeb235403d204530edef9ad660bdd8500b470dc57bbfe15",
+      "token_id": "107666216835974952697592900679378777964858897659704139611783329447957647970073",
+      "outcome": "Up",
+      "market_slug": "btc-updown-5m-1774186500",
+      "question": "Bitcoin Up or Down - March 22, 9:35AM-9:40AM ET",
+      "price": 0.12
+    }
+  ],
+  "meta": {
+    "symbol": "BTC",
+    "source": "polymarket",
+    "count": 1,
+    "next_cursor": "eyJvZmZzZXQiOiAxfQ=="
+  }
+}

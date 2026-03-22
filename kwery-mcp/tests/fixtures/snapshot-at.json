@@ -1,0 +1,14 @@
+{
+  "data": {
+    "timestamp": "2024-03-18T12:00:00Z",
+    "symbol": "BTC",
+    "source": "polymarket",
+    "market_id": "0x440c3c38",
+    "mid_price": 0.53,
+    "best_bid": 0.52,
+    "best_ask": 0.54,
+    "spread": 0.02,
+    "bids": [[0.52, 500], [0.51, 1000]],
+    "asks": [[0.54, 400], [0.55, 800]]
+  }
+}

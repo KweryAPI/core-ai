@@ -1,0 +1,10 @@
+{
+  "data": [],
+  "meta": {
+    "symbol": "BTC",
+    "source": "binance_futures",
+    "interval": "1h",
+    "count": 0,
+    "next_cursor": null
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm install:*)",
+      "Bash(npm install:*)",
+      "Bash(pnpm --version)",
+      "Bash(pnpm typecheck:*)",
+      "Bash(pnpm build:*)",
+      "Bash(pnpm test:*)",
+      "Bash(chmod +x /c/Users/noaha/OneDrive/Documents/Devwork/KweryAI/scripts/smoke-cli.sh /c/Users/noaha/OneDrive/Documents/Devwork/KweryAI/scripts/update-fixtures.sh)",
+      "Bash(pnpm test:coverage)",
+      "Bash(pnpm test:smoke)",
+      "Bash(pnpm smoke:cli)",
+      "Bash(pnpm fixtures:update)",
+      "Bash(chmod +x c:/Users/noaha/OneDrive/Documents/Devwork/KweryAI/kwery-cursor/install.sh)",
+      "Bash(chmod +x c:/Users/noaha/OneDrive/Documents/Devwork/KweryAI/scripts/link-agents-skills.sh)",
+      "Bash(pnpm add:*)",
+      "Bash(chmod +x c:/Users/noaha/OneDrive/Documents/Devwork/KweryAI/scripts/test-install-scripts.sh)",
+      "Bash(c:/Users/noaha/OneDrive/Documents/Devwork/KweryAI/.github/workflows/ci.yml:*)",
+      "Bash(pnpm test:structure)",
+      "Bash(for skill:*)",
+      "Bash(do)",
+      "Bash(cp \"kwery-skills/$skill/SKILL.md\" \"kwery-plugin/skills/$skill/SKILL.md\")",
+      "Bash(done)",
+      "Bash(chmod +x \"c:/Users/noaha/OneDrive/Documents/Devwork/KweryAI/scripts/test-all.sh\")",
+      "Bash(pnpm test:all)",
+      "Bash(pnpm changeset:*)",
+      "Bash(chmod +x \"c:/Users/noaha/OneDrive/Documents/Devwork/KweryAI/scripts/prepublish-check.sh\" \"c:/Users/noaha/OneDrive/Documents/Devwork/KweryAI/scripts/security-check.sh\")",
+      "Bash(chmod +x \"c:/Users/noaha/OneDrive/Documents/Devwork/KweryAI/scripts/update-org-placeholders.sh\")",
+      "Bash(bash scripts/update-org-placeholders.sh)"
+    ]
+  }
+}

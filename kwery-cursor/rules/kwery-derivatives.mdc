@@ -1,0 +1,44 @@
+---
+description: Rules for analyzing perpetual funding rates, open interest, and liquidations across Binance and Hyperliquid using Kwery MCP tools.
+globs: []
+alwaysApply: false
+---
+
+# Kwery Derivatives Analysis
+
+## Available Tools
+
+| Tool | Description |
+|------|-------------|
+| `binance_funding` | Binance futures funding (every 8h) |
+| `hyperliquid_funding` | Hyperliquid funding (continuous) |
+| `binance_oi` | Binance open interest history |
+| `hyperliquid_oi` | Hyperliquid open interest history |
+| `binance_liquidations` | Forced liquidation events |
+| `hyperliquid_candles` | OHLCV + funding_rate + open_interest per bar |
+
+## Funding Rate Interpretation
+
+- Positive → longs pay shorts → crowded long / bullish sentiment
+- Negative → shorts pay longs → crowded short / bearish sentiment
+- Annualized = `rate × 3 × 365` (Binance pays every 8h)
+- Extreme: >0.1%/8h = >109% APR → watch for reversal
+
+## Open Interest Signals
+
+- Rising OI + rising price → trend confirmation
+- Rising OI + falling price → bearish pressure building
+- Falling OI + price move → short squeeze or liquidation cascade
+
+## Liquidations
+
+Use `side="long"` or `side="short"` and `min_usd` to filter significant events:
+```
+binance_liquidations(symbol="BTC", side="long", min_usd=100000, limit=1000)
+```
+`min_usd` filter requires Business plan.
+
+## Tier Limits
+
+Funding/OI: Free 7d · Pro 6mo · Business full
+Liquidations: Free 24h · Pro 6mo · Business full

@@ -1,0 +1,78 @@
+{
+  "markets": [
+    {
+      "market_id": "1672084",
+      "event_id": "293051",
+      "slug": "btc-updown-5m-1774186800",
+      "source": "polymarket",
+      "question": "Bitcoin Up or Down - March 22, 9:40AM-9:45AM ET",
+      "market_type": "5m",
+      "start_time": "2026-03-21T13:48:07.035892Z",
+      "end_time": "2026-03-22T13:45:00Z",
+      "btc_price_start": null,
+      "condition_id": "0x464a3bcdf72d2daa137aa08d775d534e9704c8b481f93ea8d412aea7be9ab264",
+      "clob_token_up": "44293380281531976925542618691273495252274216651840021081001608741531682194875",
+      "clob_token_down": "63883161569717600656513886469318152238674048978579709800260762630726072203404",
+      "winner": null,
+      "final_volume": 67.988625,
+      "final_liquidity": 30771.7924,
+      "btc_price_end": null,
+      "resolved_at": null,
+      "tags": [
+        {
+          "id": "102127",
+          "label": "Up or Down",
+          "slug": "up-or-down"
+        },
+        {
+          "id": "1312",
+          "label": "Crypto Prices",
+          "slug": "crypto-prices"
+        },
+        {
+          "id": "102169",
+          "label": "Hide From New",
+          "slug": "hide-from-new"
+        },
+        {
+          "id": "101757",
+          "label": "Recurring",
+          "slug": "recurring"
+        },
+        {
+          "id": "21",
+          "label": "Crypto",
+          "slug": "crypto"
+        },
+        {
+          "id": "235",
+          "label": "Bitcoin",
+          "slug": "bitcoin"
+        },
+        {
+          "id": "102892",
+          "label": "5M",
+          "slug": "5M"
+        }
+      ],
+      "live_volume": {
+        "total": 471.431309,
+        "markets": [
+          {
+            "market": "0x464a3bcdf72d2daa137aa08d775d534e9704c8b481f93ea8d412aea7be9ab264",
+            "value": 471.431309
+          }
+        ]
+      },
+      "created_at": "2026-03-22T13:38:14.833122Z",
+      "updated_at": "2026-03-22T13:38:47.883247Z"
+    }
+  ],
+  "total": 2278,
+  "limit": 1,
+  "offset": 0,
+  "meta": {
+    "next_cursor": "eyJvZmZzZXQiOiAxfQ=="
+  },
+  "warning": null
+}

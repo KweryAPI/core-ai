@@ -1,0 +1,247 @@
+{
+  "sources": [
+    {
+      "source": "binance",
+      "label": "Binance Spot",
+      "symbols": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "XRP"
+      ],
+      "intervals": [
+        "1s",
+        "5m",
+        "15m",
+        "1h",
+        "4h",
+        "1d"
+      ],
+      "endpoints": [
+        "candles",
+        "orderbook",
+        "flow"
+      ],
+      "tier_requirements": {
+        "candles": {
+          "free": "15m+1h+4h+24h / 14d",
+          "pro": "5m+ / 30d",
+          "business": "1s+ / full"
+        },
+        "orderbook": {
+          "free": "14d",
+          "pro": "30d",
+          "business": "full"
+        },
+        "flow": {
+          "free": "14d",
+          "pro": "30d",
+          "business": "full"
+        }
+      }
+    },
+    {
+      "source": "binance_futures",
+      "label": "Binance Futures",
+      "symbols": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "XRP"
+      ],
+      "intervals": [
+        "1s",
+        "5m",
+        "15m",
+        "1h",
+        "4h",
+        "1d"
+      ],
+      "endpoints": [
+        "candles",
+        "funding",
+        "open-interest",
+        "liquidations"
+      ],
+      "tier_requirements": {
+        "candles": {
+          "free": "15m+ / 14d",
+          "pro": "5m+ / 30d",
+          "business": "1s+ / full"
+        },
+        "funding": {
+          "free": "7d",
+          "pro": "30d",
+          "business": "full"
+        },
+        "open-interest": {
+          "free": "7d",
+          "pro": "30d",
+          "business": "full"
+        },
+        "liquidations": {
+          "free": "24h",
+          "pro": "30d",
+          "business": "full"
+        }
+      }
+    },
+    {
+      "source": "chainlink",
+      "label": "Chainlink Oracle",
+      "symbols": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "XRP"
+      ],
+      "intervals": [
+        "5m",
+        "15m"
+      ],
+      "endpoints": [
+        "candles"
+      ],
+      "tier_requirements": {
+        "candles": {
+          "free": "14d",
+          "pro": "30d",
+          "business": "full"
+        }
+      }
+    },
+    {
+      "source": "hyperliquid",
+      "label": "Hyperliquid",
+      "symbols": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "XRP"
+      ],
+      "intervals": [
+        "5m",
+        "15m",
+        "1h",
+        "4h",
+        "1d"
+      ],
+      "endpoints": [
+        "candles",
+        "funding",
+        "open-interest",
+        "trades"
+      ],
+      "tier_requirements": {
+        "candles": {
+          "free": "15m+ / 14d",
+          "pro": "5m+ / 30d",
+          "business": "full"
+        },
+        "funding": {
+          "free": "7d",
+          "pro": "30d",
+          "business": "full"
+        },
+        "open-interest": {
+          "free": "7d",
+          "pro": "30d",
+          "business": "full"
+        },
+        "trades": {
+          "free": "14d",
+          "pro": "30d",
+          "business": "full"
+        }
+      }
+    },
+    {
+      "source": "polymarket",
+      "label": "Polymarket",
+      "symbols": [
+        "BTC",
+        "ETH",
+        "SOL"
+      ],
+      "intervals": [
+        "5m",
+        "15m",
+        "1h",
+        "4h",
+        "24h"
+      ],
+      "endpoints": [
+        "candles",
+        "orderbook",
+        "markets",
+        "trades"
+      ],
+      "tier_requirements": {
+        "candles": {
+          "free": "14d",
+          "pro": "30d",
+          "business": "full"
+        },
+        "orderbook": {
+          "free": "14d",
+          "pro": "30d",
+          "business": "full"
+        },
+        "markets": {
+          "free": "active only",
+          "pro": "full",
+          "business": "full"
+        },
+        "trades": {
+          "free": "14d",
+          "pro": "30d",
+          "business": "full"
+        }
+      }
+    },
+    {
+      "source": "kalshi",
+      "label": "Kalshi",
+      "symbols": [
+        "BTC",
+        "ETH",
+        "SOL"
+      ],
+      "intervals": [
+        "5m",
+        "15m",
+        "1h",
+        "4h",
+        "24h"
+      ],
+      "endpoints": [
+        "candles",
+        "orderbook",
+        "markets",
+        "trades"
+      ],
+      "tier_requirements": {
+        "candles": {
+          "free": "14d",
+          "pro": "30d",
+          "business": "full"
+        },
+        "orderbook": {
+          "free": "14d",
+          "pro": "30d",
+          "business": "full"
+        },
+        "markets": {
+          "free": "active only",
+          "pro": "full",
+          "business": "full"
+        },
+        "trades": {
+          "free": "14d",
+          "pro": "30d",
+          "business": "full"
+        }
+      }
+    }
+  ]
+}
