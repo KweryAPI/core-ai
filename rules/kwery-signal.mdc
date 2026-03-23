@@ -1,24 +1,24 @@
 ---
-description: Rules for building cross-platform trading signals from Polymarket, Kalshi, and Binance/Hyperliquid derivatives using Kwery MCP tools.
+description: Rules for building cross-platform trading signals from Polymarket, Kalshi, Binance, and Hyperliquid derivatives using Kwery MCP tools.
 globs: []
 alwaysApply: false
 ---
 
 # Kwery Signal Construction
 
-## Data Normalization — Critical
+## Data Normalization -- Critical
 
-**Kalshi prices are cents (0–100). Polymarket is [0–1].** Always normalize before comparing:
+**Kalshi prices are cents (0-100). Polymarket is [0-1].** Always normalize before comparing:
 
-- Kalshi: `mid_price / 100` → [0-1]
-- Polymarket: `close` → already [0-1]
+- Kalshi: `mid_price / 100` -> [0-1]
+- Polymarket: `close` -> already [0-1]
 
 Timestamp field names differ: Kalshi uses `time`, all others use `timestamp`. Align to UTC before cross-source comparisons.
 
 ## Signal Patterns
 
 ### Funding Rate vs Prediction Market Divergence
-High funding + low Kalshi/Polymarket probability = derivatives/PM disagreement → mean reversion candidate.
+High funding + low Kalshi/Polymarket probability = derivatives/PM disagreement -> mean reversion candidate.
 
 ```
 binance_funding(symbol="BTC", source="binance_futures")
@@ -42,5 +42,5 @@ binance_flow(symbol="BTC", interval="1h")
 
 ## Funding Rate Math
 
-Binance pays every 8h. Annualize: `rate × 3 × 365`.
+Binance pays every 8h. Annualize: `rate * 3 * 365`.
 Extreme positive (>0.1%/8h = >109% APR) often precedes corrections.
