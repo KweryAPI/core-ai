@@ -1,6 +1,6 @@
 {
   "name": "kwery-cli",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "CLI for Kwery — unified crypto and prediction market data across Polymarket, Kalshi, Hyperliquid, Binance, and Chainlink.",
   "type": "module",
   "bin": {
@@ -43,11 +43,11 @@
   "homepage": "https://kwery.xyz/docs/cli",
   "repository": {
     "type": "git",
-    "url": "https://github.com/KweryAPI/kwery-agents.git",
+    "url": "https://github.com/KweryAPI/core-ai.git",
     "directory": "kwery-cli"
   },
   "bugs": {
-    "url": "https://github.com/KweryAPI/kwery-agents/issues"
+    "url": "https://github.com/KweryAPI/core-ai/issues"
   },
   "engines": {
     "node": ">=20"

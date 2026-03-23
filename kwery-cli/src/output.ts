@@ -56,9 +56,20 @@ export function printOutput(
     return;
   }
 
-  const rows = Array.isArray(data)
-    ? (data as Record<string, unknown>[])
-    : (data as any)?.data ?? [data as Record<string, unknown>];
+  // Unwrap { data: [...] } envelope if present
+  const unwrapped =
+    !Array.isArray(data) && data !== null && typeof data === "object" && "data" in data
+      ? (data as any).data
+      : data;
+
+  // For non-array responses (e.g. kwery limits returns a plain object),
+  // pivot to [{key, value}] rows so table/csv output is readable.
+  const rows: Record<string, unknown>[] = Array.isArray(unwrapped)
+    ? (unwrapped as Record<string, unknown>[])
+    : Object.entries(unwrapped as Record<string, unknown>).map(([key, value]) => ({
+        key,
+        value: typeof value === "object" ? JSON.stringify(value) : value,
+      }));
 
   if (format === "csv") {
     console.log(formatCsv(rows));

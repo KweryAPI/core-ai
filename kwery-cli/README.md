@@ -83,5 +83,5 @@ and `--after` for cursor pagination.
 ## Links
 
 - [Full docs](https://kwery.xyz/docs/cli)
-- [GitHub](https://github.com/KweryAPI/kwery-agents)
+- [GitHub](https://github.com/KweryAPI/core-ai)
 - [Pricing](https://kwery.xyz/pricing)

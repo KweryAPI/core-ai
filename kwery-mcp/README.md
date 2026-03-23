@@ -51,5 +51,5 @@ Get your API key at [kwery.xyz/dashboard](https://kwery.xyz/dashboard).
 
 - [Full docs](https://kwery.xyz/docs/mcp)
 - [API reference](https://kwery-api.com/docs)
-- [GitHub](https://github.com/KweryAPI/kwery-agents)
+- [GitHub](https://github.com/KweryAPI/core-ai)
 - [Pricing](https://kwery.xyz/pricing)

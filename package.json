@@ -29,11 +29,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/KweryAPI/kwery-agents.git"
+    "url": "https://github.com/KweryAPI/core-ai.git"
   },
   "homepage": "https://kwery.xyz",
   "bugs": {
-    "url": "https://github.com/KweryAPI/kwery-agents/issues"
+    "url": "https://github.com/KweryAPI/core-ai/issues"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.6.0",

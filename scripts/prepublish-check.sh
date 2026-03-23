@@ -61,7 +61,7 @@ FORBIDDEN_MCP=(
 )
 
 for f in "${REQUIRED_MCP[@]}"; do
-  if tar -tzf "$MCP_TARBALL" 2>/dev/null | grep -q "^$f"; then
+  if tar -tzf "$MCP_TARBALL" 2>/dev/null | tr -d '\r' | grep -q "^$f"; then
     log_pass "Contains: $f"
   else
     log_fail "Missing from package: $f"
@@ -69,7 +69,7 @@ for f in "${REQUIRED_MCP[@]}"; do
 done
 
 for f in "${FORBIDDEN_MCP[@]}"; do
-  if tar -tzf "$MCP_TARBALL" 2>/dev/null | grep -q "^$f"; then
+  if tar -tzf "$MCP_TARBALL" 2>/dev/null | tr -d '\r' | grep -q "^$f"; then
     log_fail "Should NOT be in package: $f"
   else
     log_pass "Correctly excluded: $f"
@@ -92,7 +92,7 @@ FORBIDDEN_CLI=(
 )
 
 for f in "${REQUIRED_CLI[@]}"; do
-  if tar -tzf "$CLI_TARBALL" 2>/dev/null | grep -q "^$f"; then
+  if tar -tzf "$CLI_TARBALL" 2>/dev/null | tr -d '\r' | grep -q "^$f"; then
     log_pass "Contains: $f"
   else
     log_fail "Missing from package: $f"
@@ -100,7 +100,7 @@ for f in "${REQUIRED_CLI[@]}"; do
 done
 
 for f in "${FORBIDDEN_CLI[@]}"; do
-  if tar -tzf "$CLI_TARBALL" 2>/dev/null | grep -q "^$f"; then
+  if tar -tzf "$CLI_TARBALL" 2>/dev/null | tr -d '\r' | grep -q "^$f"; then
     log_fail "Should NOT be in package: $f"
   else
     log_pass "Correctly excluded: $f"
@@ -136,15 +136,19 @@ cd "$CLI_TEST_DIR"
 npm init -y > /dev/null 2>&1
 npm install "$CLI_TARBALL_PATH" > /dev/null 2>&1
 
-CLI_BIN="$CLI_TEST_DIR/node_modules/.bin/kwery"
-if [ -f "$CLI_BIN" ] || [ -L "$CLI_BIN" ]; then
+CLI_BIN_WRAPPER="$CLI_TEST_DIR/node_modules/.bin/kwery"
+# On Windows, .bin/ contains shell script wrappers, not symlinks.
+# Use the dist entry point directly with node for cross-platform compatibility.
+CLI_DIST="$CLI_TEST_DIR/node_modules/kwery-cli/dist/index.js"
+
+if [ -f "$CLI_BIN_WRAPPER" ] || [ -L "$CLI_BIN_WRAPPER" ] || [ -f "$CLI_DIST" ]; then
   log_pass "kwery CLI binary installed"
 else
   log_fail "kwery CLI binary not found after install"
 fi
 
 # --version should always work
-VERSION_OUTPUT=$(node "$CLI_BIN" --version 2>&1)
+VERSION_OUTPUT=$(node "$CLI_DIST" --version 2>&1)
 if echo "$VERSION_OUTPUT" | grep -qE "^[0-9]+\.[0-9]+\.[0-9]+"; then
   log_pass "kwery --version returns semver: $VERSION_OUTPUT"
 else
@@ -152,7 +156,7 @@ else
 fi
 
 # --help should always work
-if node "$CLI_BIN" --help > /dev/null 2>&1; then
+if node "$CLI_DIST" --help > /dev/null 2>&1; then
   log_pass "kwery --help exits 0"
 else
   log_fail "kwery --help failed"
@@ -160,7 +164,7 @@ fi
 
 # Verify all platform namespaces appear in help
 for platform in polymarket kalshi hyperliquid binance; do
-  if node "$CLI_BIN" --help 2>&1 | grep -q "$platform"; then
+  if node "$CLI_DIST" --help 2>&1 | grep -q "$platform"; then
     log_pass "Help mentions $platform"
   else
     log_fail "Help does not mention $platform"
@@ -177,9 +181,9 @@ if [ -n "${KWERY_API_KEY:-}" ]; then
   cd "$CLI_LIVE_DIR"
   npm init -y > /dev/null 2>&1
   npm install "$CLI_TARBALL_PATH" > /dev/null 2>&1
-  CLI_BIN="$CLI_LIVE_DIR/node_modules/.bin/kwery"
+  CLI_DIST="$CLI_LIVE_DIR/node_modules/kwery-cli/dist/index.js"
 
-  LIMITS_OUTPUT=$(KWERY_API_KEY="$KWERY_API_KEY" node "$CLI_BIN" limits --format json 2>&1)
+  LIMITS_OUTPUT=$(KWERY_API_KEY="$KWERY_API_KEY" node "$CLI_DIST" limits --format json 2>&1)
 
   if echo "$LIMITS_OUTPUT" | jq -e '.plan' > /dev/null 2>&1; then
     PLAN=$(echo "$LIMITS_OUTPUT" | jq -r '.plan')

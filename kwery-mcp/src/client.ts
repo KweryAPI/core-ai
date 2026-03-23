@@ -27,7 +27,7 @@ export class KweryClient {
     const res = await fetch(url.toString(), {
       headers: {
         "X-API-Key": this.apiKey,
-        "User-Agent": "kwery-mcp/0.2.0",
+        "User-Agent": "kwery-mcp/1.0.0",
       },
     });
 

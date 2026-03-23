@@ -1,5 +1,6 @@
 import { Command } from "commander";
 import { KweryClient } from "../client.js";
+import { config } from "../config.js";
 import { printOutput, printError, type OutputFormat } from "../output.js";
 
 export function accountCommands(program: Command): void {
@@ -8,15 +9,16 @@ export function accountCommands(program: Command): void {
     .description("Save your Kwery API key to the local config")
     .argument("<api-key>", "Your API key from https://kwery.xyz/dashboard")
     .action((apiKey) => {
-      process.env.KWERY_API_KEY = apiKey;
-      console.log("API key saved. Set KWERY_API_KEY in your environment or .env file.");
+      config.set("apiKey", apiKey);
+      console.log("API key saved.");
     });
 
   program
     .command("logout")
     .description("Remove the saved Kwery API key from the local config")
     .action(() => {
-      console.log("Logged out. Unset KWERY_API_KEY from your environment.");
+      config.delete("apiKey");
+      console.log("Logged out. API key removed from local config.");
     });
 
   program

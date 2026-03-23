@@ -1,4 +1,4 @@
-# kwery-agents
+# core-ai
 
 Official Kwery AI tooling monorepo — MCP server, CLI, and Claude Code skills.
 

@@ -1,6 +1,6 @@
 {
   "name": "kwery",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Kwery AI — market data MCP tools, skills, and commands for Claude Code",
   "mcp": "../.mcp.json",
   "skills": [
