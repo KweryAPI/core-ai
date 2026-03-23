@@ -1,0 +1,41 @@
+---
+description: Overview of Kwery AI — unified crypto and prediction market data API. Read this rule to understand what Kwery provides and how to use it in agent workflows.
+globs: []
+alwaysApply: false
+---
+
+# Kwery AI Overview
+
+Kwery provides unified historical data for crypto and prediction markets via a single REST API at `https://kwery-api.com`.
+
+## Data Sources
+
+| Source | Data |
+|--------|------|
+| `binance` | Spot OHLCV, trade ticks, directional flow |
+| `binance_futures` | Futures OHLCV, funding rates, OI, liquidations |
+| `chainlink` | Oracle price series |
+| `polymarket` | Prediction market probabilities, CLOB order book |
+| `kalshi` | Binary event markets, order book snapshots |
+| `hyperliquid` | Perpetual OHLCV + funding + OI, L2 snapshots |
+
+## Authentication
+
+All requests require `X-API-Key` header. Set `KWERY_API_KEY` environment variable.
+
+## Key Conventions
+
+- **Polymarket prices** are probabilities [0-1]
+- **Kalshi prices** are cents [0-100] — divide by 100 to normalize
+- **Pagination** uses cursor-based `after` param from `meta.next_cursor`
+- **Polymarket candles** require `token_id` for a single backtestable series
+- **Point-in-time snapshots** use `*_snapshot_at` (not `*_snapshots`) to avoid look-ahead bias
+- **Tier gate errors** (403) include upgrade URL at `https://kwery.xyz/pricing`
+
+## Discovery Tools
+
+```
+kwery_limits   — check plan, credits, feature access
+kwery_sources  — list all sources, symbols, intervals, tier requirements
+kwery_status   — ingestion health per source
+```

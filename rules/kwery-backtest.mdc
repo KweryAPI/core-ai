@@ -1,0 +1,39 @@
+---
+description: Rules for running point-in-time backtests on Polymarket and Kalshi using Kwery MCP tools. Apply when building trading strategies or reconstructing historical market state.
+globs: []
+alwaysApply: false
+---
+
+# Kwery Backtest
+
+## Look-ahead Bias Prevention
+
+Always use `*_snapshot_at` tools (not `*_snapshots`) when you need the book state at a specific historical time. The `_at` endpoint returns the snapshot *at or before* the requested timestamp — no future data leaks in.
+
+```
+polymarket_snapshot_at(symbol="BTC", time="2024-01-15T08:00:00Z")
+kalshi_snapshot_at(symbol="BTC", time="2024-01-15T08:00:00Z")
+hyperliquid_snapshot_at(symbol="BTC", time="2024-01-15T08:00:00Z")
+```
+
+## Critical: token_id for Polymarket
+
+Without `token_id`, `polymarket_candles` returns multiple rows per timestamp (Up + Down legs). This corrupts any backtest. Always pass `clob_token_up` or `clob_token_down` from `polymarket_markets`.
+
+## Backtest Workflow
+
+1. **Discover** — `polymarket_markets` or `kalshi_markets` to find the market
+2. **Candles** — `polymarket_candles` with `token_id` for the probability series
+3. **Reference price** — `binance_candles` or `chainlink_candles` for spot
+4. **Snapshots** — `*_snapshot_at` at each decision point
+5. **Analyze** — compare probabilities vs realized outcomes
+
+## Price Conventions
+
+- Polymarket: probabilities [0-1]
+- Kalshi: cents [0-100] — normalize with `/100`
+- Binance / Chainlink: USD
+
+## Pagination
+
+For full history, paginate with `after=meta.next_cursor` until `meta.next_cursor` is null.

@@ -1,0 +1,50 @@
+---
+description: Rules for researching historical Polymarket and Kalshi prediction market data, resolutions, and cross-platform comparisons using Kwery MCP tools.
+globs: []
+alwaysApply: false
+---
+
+# Kwery Prediction Market Research
+
+## Market Discovery
+
+```
+polymarket_markets(symbol="BTC", active=false)   # resolved markets
+kalshi_markets(symbol="BTC")
+```
+
+`active=false` returns resolved markets only. `active=true` returns live only.
+
+## Resolved Market Fields (Polymarket)
+
+- `winner`: "Up" or "Down"
+- `resolved_at`: resolution timestamp
+- `final_volume`: total USDC traded
+- `clob_token_up` / `clob_token_down`: token IDs for candle series
+
+## Cross-Platform Probability Comparison
+
+Kalshi prices are in cents [0-100]. Polymarket in [0-1]. Normalize before comparing:
+
+```
+pm_prob = close                    # Polymarket [0-1]
+ks_prob = mid_price / 100          # Kalshi cents → [0-1]
+divergence = pm_prob - ks_prob
+```
+
+## Event-Driven Price Study
+
+Use `polymarket_candles` with `token_id` to get a single price series (probabilities converge to 1.0 or 0.0 at expiry).
+
+## Order Book Depth Over Time
+
+```
+polymarket_snapshots(symbol="BTC", interval="1h", include_orderbook=true, depth=10)
+```
+
+Each snapshot: `bids`, `asks`, `mid_price`, `spread`, `imbalance`.
+
+## Tier Limits
+
+Candles: Free 14d · Pro 30d · Business full
+Snapshots: Free 7d · Pro 30d · Business full
