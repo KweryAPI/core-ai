@@ -1,0 +1,23 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "kwery-mcp (dev watch)",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "kwery-mcp", "dev"],
+      "cwd": "C:\\Users\\noaha\\OneDrive\\Documents\\Devwork\\KweryAI"
+    },
+    {
+      "name": "kwery-cli (dev watch)",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "kwery-cli", "dev"],
+      "cwd": "C:\\Users\\noaha\\OneDrive\\Documents\\Devwork\\KweryAI"
+    },
+    {
+      "name": "all packages (dev watch)",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["dev"],
+      "cwd": "C:\\Users\\noaha\\OneDrive\\Documents\\Devwork\\KweryAI"
+    }
+  ]
+}

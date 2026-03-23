@@ -27,7 +27,21 @@
       "Bash(pnpm changeset:*)",
       "Bash(chmod +x \"c:/Users/noaha/OneDrive/Documents/Devwork/KweryAI/scripts/prepublish-check.sh\" \"c:/Users/noaha/OneDrive/Documents/Devwork/KweryAI/scripts/security-check.sh\")",
       "Bash(chmod +x \"c:/Users/noaha/OneDrive/Documents/Devwork/KweryAI/scripts/update-org-placeholders.sh\")",
-      "Bash(bash scripts/update-org-placeholders.sh)"
+      "Bash(bash scripts/update-org-placeholders.sh)",
+      "Bash(file /c/Users/noaha/OneDrive/Documents/Devwork/KweryAI/scripts/*.sh)",
+      "Bash(grep -l \"function\\\\|script\" /c/Users/noaha/OneDrive/Documents/Devwork/KweryAI/scripts/*.mjs)",
+      "Bash(grep -r \"github.com/KweryAPI\" /c/Users/noaha/OneDrive/Documents/Devwork/KweryAI/package.json /c/Users/noaha/OneDrive/Documents/Devwork/KweryAI/kwery-*/package.json)",
+      "Bash(grep -n \"→\\\\|—\\\\|–\\\\|×\\\\|·\" /c/Users/noaha/OneDrive/Documents/Devwork/KweryAI/.cursor/rules/*.mdc /c/Users/noaha/OneDrive/Documents/Devwork/KweryAI/kwery-cursor/rules/*.mdc /c/Users/noaha/OneDrive/Documents/Devwork/KweryAI/rules/*.mdc)",
+      "Bash(grep -r \"core-ai\\\\|kwery-agents\" /c/Users/noaha/OneDrive/Documents/Devwork/KweryAI/package.json /c/Users/noaha/OneDrive/Documents/Devwork/KweryAI/kwery-*/package.json)",
+      "Bash(wc -l /c/Users/noaha/OneDrive/Documents/Devwork/KweryAI/.agents/skills/*/SKILL.md /c/Users/noaha/OneDrive/Documents/Devwork/KweryAI/kwery-skills/*/SKILL.md /c/Users/noaha/OneDrive/Documents/Devwork/KweryAI/kwery-plugin/skills/*/SKILL.md)",
+      "Read(//c/Users/noaha/OneDrive/Documents/Devwork/skills/**)",
+      "Read(//c/Users/noaha/OneDrive/Documents/Devwork/**)",
+      "Bash(for f:*)",
+      "Bash(do echo:*)",
+      "Read(//c/Users/noaha/OneDrive/Documents/Devwork/KweryAI/**)",
+      "Bash(/tmp/final_validation.sh:*)",
+      "Bash(chmod +x /tmp/final_validation.sh)",
+      "Bash(/tmp/final_validation.sh)"
     ]
   }
 }

@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# kwery-skills/backtest/install.sh
-# Installs the backtest skill into Claude Code.
+# kwery-skills/research/install.sh
+# Installs the research skill into Claude Code.
 #
 # Usage:
-#   bash install.sh                   — install to ~/.claude/skills/backtest/
-#   bash install.sh --project <dir>   — install to <dir>/.claude/skills/backtest/
+#   bash install.sh                   — install to ~/.claude/skills/research/
+#   bash install.sh --project <dir>   — install to <dir>/.claude/skills/research/
 
 set -euo pipefail
 
