@@ -119,8 +119,8 @@ Run `/setup` in Claude Code, or ask:
 
 ## Links
 
-- [Documentation](https://kwery.xyz/docs/mcp)
-- [API reference](https://kwery-api.com/docs)
-- [Pricing](https://kwery.xyz/pricing)
+- [Full docs](https://kwery.xyz/docs/agents/mcp)
+- [API reference](https://kwery-api.com/docs/api-reference)
 - [GitHub](https://github.com/KweryAPI/core-ai)
+- [Pricing](https://kwery.xyz/pricing)
 - [npm (kwery-mcp)](https://npmjs.com/package/kwery-mcp)
