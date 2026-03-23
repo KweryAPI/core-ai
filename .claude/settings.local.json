@@ -41,7 +41,16 @@
       "Read(//c/Users/noaha/OneDrive/Documents/Devwork/KweryAI/**)",
       "Bash(/tmp/final_validation.sh:*)",
       "Bash(chmod +x /tmp/final_validation.sh)",
-      "Bash(/tmp/final_validation.sh)"
+      "Bash(/tmp/final_validation.sh)",
+      "Bash(pnpm vitest:*)",
+      "Bash(python3 -c \"import sys,json; print\\(json.load\\(sys.stdin\\)[0][''''filename'''']\\)\")",
+      "Bash(tar -tzf kwery-mcp-0.2.0.tgz)",
+      "Bash(grep -rn kwery-agents --include=*.json --include=*.md --include=*.sh --include=*.ts --include=*.yml --include=*.mdc --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=dist c:/Users/noaha/OneDrive/Documents/Devwork/KweryAI)",
+      "WebFetch(domain:www.helius.dev)",
+      "Bash(claude mcp:*)",
+      "WebFetch(domain:docs.cursor.com)",
+      "WebFetch(domain:cursor.com)",
+      "Bash(python3 -c \":*)"
     ]
   }
 }

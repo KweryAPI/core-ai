@@ -28,7 +28,7 @@ Kalshi prices are in cents [0-100]. Polymarket in [0-1]. Normalize before compar
 
 ```
 pm_prob = close                    # Polymarket [0-1]
-ks_prob = mid_price / 100          # Kalshi cents → [0-1]
+ks_prob = mid_price / 100          # Kalshi cents -> [0-1]
 divergence = pm_prob - ks_prob
 ```
 
@@ -46,5 +46,5 @@ Each snapshot: `bids`, `asks`, `mid_price`, `spread`, `imbalance`.
 
 ## Tier Limits
 
-Candles: Free 14d · Pro 30d · Business full
-Snapshots: Free 7d · Pro 30d · Business full
+Candles: Free 14d * Pro 30d * Business full
+Snapshots: Free 7d * Pro 30d * Business full

@@ -1,5 +1,5 @@
 ---
-description: Overview of Kwery AI — unified crypto and prediction market data API. Read this rule to understand what Kwery provides and how to use it in agent workflows.
+description: Overview of Kwery AI -- unified crypto and prediction market data API. Read this rule to understand what Kwery provides and how to use it in agent workflows.
 globs: []
 alwaysApply: false
 ---
@@ -26,7 +26,7 @@ All requests require `X-API-Key` header. Set `KWERY_API_KEY` environment variabl
 ## Key Conventions
 
 - **Polymarket prices** are probabilities [0-1]
-- **Kalshi prices** are cents [0-100] — divide by 100 to normalize
+- **Kalshi prices** are cents [0-100] -- divide by 100 to normalize
 - **Pagination** uses cursor-based `after` param from `meta.next_cursor`
 - **Polymarket candles** require `token_id` for a single backtestable series
 - **Point-in-time snapshots** use `*_snapshot_at` (not `*_snapshots`) to avoid look-ahead bias
@@ -35,7 +35,7 @@ All requests require `X-API-Key` header. Set `KWERY_API_KEY` environment variabl
 ## Discovery Tools
 
 ```
-kwery_limits   — check plan, credits, feature access
-kwery_sources  — list all sources, symbols, intervals, tier requirements
-kwery_status   — ingestion health per source
+kwery_limits   -- check plan, credits, feature access
+kwery_sources  -- list all sources, symbols, intervals, tier requirements
+kwery_status   -- ingestion health per source
 ```

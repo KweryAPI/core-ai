@@ -28,14 +28,14 @@ pnpm test
 cd kwery-mcp && claude mcp add kwery node $(pwd)/dist/index.js
 ```
 
-## Quick Start — Claude Code Plugin
+## Quick Start — Claude Code (MCP + Skills)
 
 ```bash
-# Install plugin into Claude Code
-claude plugin add ./kwery-plugin
+# Add MCP server (published)
+claude mcp add -e KWERY_API_KEY=your_key_here kwery -- npx -y kwery-mcp@latest
 
-# Set your API key
-export KWERY_API_KEY=your_key_here
+# Skills are Markdown files — copy them into your project or load manually.
+# No automated install command exists in the current Claude Code release.
 ```
 
 ## Quick Start — Cursor Plugin

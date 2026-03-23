@@ -1,6 +1,7 @@
 {
   "mcpServers": {
     "kwery": {
+      "type": "stdio",
       "command": "npx",
       "args": ["-y", "kwery-mcp"],
       "env": {

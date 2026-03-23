@@ -1,7 +1,33 @@
 {
   "name": "kwery",
   "version": "1.0.0",
-  "description": "Kwery AI — market data MCP tools, skills, and commands for Claude Code",
+  "description": "Unified crypto and prediction market data for Claude Code. 30 MCP tools covering Polymarket, Kalshi, Hyperliquid, Binance, and Chainlink. Includes skills for backtesting, signal construction, derivatives analysis, and market research.",
+  "author": {
+    "name": "Kwery",
+    "url": "https://kwery.xyz"
+  },
+  "homepage": "https://kwery.xyz/docs/mcp",
+  "repository": "https://github.com/KweryAPI/core-ai",
+  "license": "MIT",
+  "keywords": [
+    "crypto",
+    "prediction-markets",
+    "polymarket",
+    "kalshi",
+    "hyperliquid",
+    "binance",
+    "chainlink",
+    "trading",
+    "quant",
+    "data",
+    "mcp",
+    "finance"
+  ],
+  "categories": [
+    "data",
+    "finance",
+    "research"
+  ],
   "mcp": "../.mcp.json",
   "skills": [
     "../skills/backtest/SKILL.md",

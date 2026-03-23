@@ -10,7 +10,7 @@ data across Polymarket, Kalshi, Hyperliquid, Binance, and Chainlink.
 Add to your Claude Code config:
 
 ```bash
-claude mcp add kwery npx kwery-mcp@latest
+claude mcp add -e KWERY_API_KEY=your_api_key_here kwery -- npx -y kwery-mcp@latest
 ```
 
 Or add to `~/.claude.json` / Claude Desktop config manually:
