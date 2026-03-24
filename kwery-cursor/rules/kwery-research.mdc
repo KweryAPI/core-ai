@@ -46,5 +46,5 @@ Each snapshot: `bids`, `asks`, `mid_price`, `spread`, `imbalance`.
 
 ## Tier Limits
 
-Candles: Free 14d * Pro 30d * Business full
-Snapshots: Free 7d * Pro 30d * Business full
+Candles: Free 7d * Pro 14d * Business 31d
+Snapshots: Free 7d * Pro 14d * Business 31d

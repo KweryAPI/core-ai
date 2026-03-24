@@ -23,19 +23,21 @@ export function hyperliquidCommand(program: Command): void {
 
   hl.command("candles <symbol>")
     .description("Fetch OHLCV candle history for a Hyperliquid perpetual")
-    .option("-i, --interval <interval>", "Interval", "1h")
+    .option("-i, --interval <interval>", "Interval: 1m | 5m | 15m | 1h | 4h | 24h", "1h")
     .option("--start <datetime>", "ISO 8601 start time")
     .option("--end <datetime>", "ISO 8601 end time")
     .option("-l, --limit <n>", "Max rows to return", "100")
+    .option("--after <cursor>", "Pagination cursor")
     .option("-f, --format <format>", "Output format: json | table | csv", "json")
     .action(async (symbol, opts) => {
       try {
         const client = new KweryClient();
         const data = await client.get(`/v1/hyperliquid/${symbol}`, {
           interval: opts.interval,
-          start_time: opts.start,
-          end_time: opts.end,
+          start: opts.start,
+          end: opts.end,
           limit: Number(opts.limit),
+          after: opts.after,
         });
         printOutput(data, opts.format as OutputFormat);
       } catch (err: any) {
@@ -95,7 +97,7 @@ export function hyperliquidCommand(program: Command): void {
 
   hl.command("oi <symbol>")
     .description("Fetch open interest history for a Hyperliquid perpetual")
-    .option("-i, --interval <interval>", "Interval", "1h")
+    .option("-i, --interval <interval>", "Interval: 1m | 5m | 15m | 1h | 4h | 24h", "1h")
     .option("--start <datetime>", "ISO 8601 start time")
     .option("--end <datetime>", "ISO 8601 end time")
     .option("-l, --limit <n>", "Max rows to return", "500")

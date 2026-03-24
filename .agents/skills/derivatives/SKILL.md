@@ -79,8 +79,8 @@ for c in candles["candles"]:
 ```
 
 ## Tier Requirements
-- Funding/OI: Free 7d · Pro 6mo · Business full
-- Liquidations: Free 24h · Pro 6mo · Business full
+- Funding/OI: Free 7d · Pro 14d · Business 31d
+- Liquidations: Free 24h · Pro 14d · Business 31d
 - `min_usd` filter on liquidations: Business plan only
 
 ## MCP Tools

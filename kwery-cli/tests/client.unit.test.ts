@@ -5,10 +5,11 @@ import { KweryClient } from "../src/client.js";
 
 describe("KweryClient", () => {
   describe("constructor", () => {
-    it("throws if no API key and no env var", () => {
+    it("exits with code 1 if no API key and no env var", () => {
       const original = process.env.KWERY_API_KEY;
       delete process.env.KWERY_API_KEY;
-      expect(() => new KweryClient()).toThrow("KWERY_API_KEY is required");
+      // getApiKey() calls process.exit(1) when no key is found
+      expect(() => new KweryClient()).toThrow(/process\.exit.*1/);
       process.env.KWERY_API_KEY = original;
     });
 

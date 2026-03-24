@@ -79,9 +79,9 @@ while True:
 ## Tier Limits
 | Data | Free | Pro | Business |
 |------|------|-----|----------|
-| Candles | 14d / 15m+ | 60d / 5m+ | 90d / 1s |
-| Snapshots | 7d | 30d | full |
-| Trade ticks | 14d | 30d | full |
+| Candles | 7d / 15m+ | 14d / 5m+ | 31d / 1s |
+| Snapshots | 7d | 14d | 31d |
+| Trade ticks | 7d | 14d | 31d |
 | 500ms snapshots | ✗ | ✗ | ✓ |
 
 ## MCP Tools

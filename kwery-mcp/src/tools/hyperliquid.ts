@@ -15,14 +15,14 @@ export const hyperliquidTools = [
     name: "hyperliquid_candles",
     description:
       "Fetch OHLCV candle history for a Hyperliquid perpetual. " +
-      "Includes funding_rate and open_interest per candle. Cost: 50 base + 3/row.",
+      "Includes funding_rate and open_interest per candle. " +
+      "Tier: Free 7d/15m+ · Pro 14d/5m+ · Business 31d/1s. Cost: 50 base + 3/row.",
     inputSchema: z.object({
       symbol: SymbolSchema,
-      interval: z.string().default("1h"),
-      start_time: z.string().datetime({ offset: true }).optional(),
-      end_time: z.string().datetime({ offset: true }).optional(),
+      interval: IntervalSchema.default("1h"),
+      ...DateRangeSchema,
       limit: z.number().int().min(1).max(1000).default(100),
-      offset: z.number().int().min(0).default(0),
+      after: z.string().optional(),
     }),
     handler: async (params: any, client: KweryClient) => {
       const { symbol, ...rest } = params;
@@ -32,7 +32,7 @@ export const hyperliquidTools = [
   {
     name: "hyperliquid_trades",
     description:
-      "Fetch individual trade ticks from Hyperliquid. Tier: Free 14d · Pro 30d · Business full.",
+      "Fetch individual trade ticks from Hyperliquid. Tier: Free 7d · Pro 14d · Business 31d.",
     inputSchema: z.object({
       symbol: SymbolSchema,
       ...DateRangeSchema,
@@ -47,7 +47,7 @@ export const hyperliquidTools = [
     name: "hyperliquid_funding",
     description:
       "Fetch perpetual funding rate history for Hyperliquid. " +
-      "Positive = longs pay shorts. Tier: Free 7d · Pro 6mo · Business full.",
+      "Positive = longs pay shorts. Tier: Free 7d · Pro 14d · Business 31d.",
     inputSchema: z.object({
       symbol: SymbolSchema,
       ...DateRangeSchema,
@@ -61,7 +61,7 @@ export const hyperliquidTools = [
   {
     name: "hyperliquid_oi",
     description:
-      "Fetch open interest history for a Hyperliquid perpetual. Tier: Free 7d · Pro 6mo · Business full.",
+      "Fetch open interest history for a Hyperliquid perpetual. Tier: Free 7d · Pro 14d · Business 31d.",
     inputSchema: z.object({
       symbol: SymbolSchema,
       interval: IntervalSchema.default("1h"),
@@ -94,7 +94,7 @@ export const hyperliquidTools = [
     inputSchema: z.object({
       symbol: SymbolSchema,
       time: z.string().datetime({ offset: true }).optional(),
-      interval: z.string().optional(),
+      interval: IntervalSchema.optional(),
     }).refine((d) => d.time || d.interval, {
       message: "Either 'time' or 'interval' is required",
     }),

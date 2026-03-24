@@ -1,3 +1,4 @@
+import { createRequire } from "module";
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import {
   CallToolRequestSchema,
@@ -11,6 +12,9 @@ import { polymarketTools } from "./tools/polymarket.js";
 import { kalshiTools } from "./tools/kalshi.js";
 import { hyperliquidTools } from "./tools/hyperliquid.js";
 import { binanceTools } from "./tools/binance.js";
+
+const require = createRequire(import.meta.url);
+const { version } = require("../package.json") as { version: string };
 
 // Max characters before we trim the data array and warn about pagination.
 // Claude Code rejects tool responses that exceed ~100k chars; 60k gives headroom.
@@ -47,7 +51,11 @@ function safeSerialize(result: unknown): string {
         hi = mid - 1;
       }
     }
-    const after = r.data[best - 1]?.timestamp ?? r.data[best - 1]?.time ?? null;
+    const after =
+      r.data[best - 1]?.timestamp ??
+      r.data[best - 1]?.time ??
+      r.data[best - 1]?.id ??
+      null;
     return JSON.stringify({
       ...r,
       data: r.data.slice(0, best),
@@ -59,11 +67,14 @@ function safeSerialize(result: unknown): string {
     });
   }
 
-  // Fallback: truncate raw string with a warning appended
-  return (
-    full.slice(0, MAX_RESPONSE_CHARS) +
-    `... [TRUNCATED — ${full.length} chars total. Use pagination params to fetch in smaller chunks.]`
-  );
+  // Fallback: return a valid JSON object with the truncated content as a string field
+  return JSON.stringify({
+    _truncated: {
+      warning: `Response too large (${full.length} chars). Showing first ${MAX_RESPONSE_CHARS} chars.`,
+      hint: "Use pagination params (limit, after/offset) to fetch smaller chunks.",
+      preview: full.slice(0, MAX_RESPONSE_CHARS),
+    },
+  });
 }
 
 export const ALL_TOOLS = [
@@ -77,7 +88,7 @@ export const ALL_TOOLS = [
 
 export function createServer(): Server {
   const s = new Server(
-    { name: "kwery-mcp", version: "1.0.0" },
+    { name: "kwery-mcp", version },
     { capabilities: { tools: {} } }
   );
 

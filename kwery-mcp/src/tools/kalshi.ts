@@ -10,6 +10,7 @@ export const kalshiTools = [
       "Prices in cents (0-100), not probabilities. Cost: 25 credits.",
     inputSchema: z.object({
       symbol: SymbolSchema.optional(),
+      limit: z.number().int().min(1).max(500).default(50),
     }),
     handler: async (params: any, client: KweryClient) => {
       return client.get("/v1/kalshi", params);
@@ -20,13 +21,14 @@ export const kalshiTools = [
     description:
       "Fetch probability price history for a Kalshi event market. " +
       "Includes yes_bid, yes_ask, no_bid, no_ask, spread, mid_price, imbalance. " +
-      "Prices in cents (0-100). imbalance > 0.5 = more YES liquidity. Cost: 50 base + 5/row.",
+      "Prices in cents (0-100). imbalance > 0.5 = more YES liquidity. " +
+      "Pagination: use offset (not after cursor) to page through results. " +
+      "Tier: Free 7d · Pro 14d · Business 31d. Cost: 50 base + 5/row.",
     inputSchema: z.object({
       symbol: SymbolSchema,
       interval: z.enum(["5m", "15m", "1h", "4h", "24h"]).default("5m"),
       include_orderbook: z.boolean().default(false),
-      start_time: z.string().datetime({ offset: true }).optional(),
-      end_time: z.string().datetime({ offset: true }).optional(),
+      ...DateRangeSchema,
       limit: z.number().int().min(1).max(1000).default(100),
       offset: z.number().int().min(0).default(0),
     }),

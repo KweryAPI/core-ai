@@ -50,5 +50,5 @@ binance_oi(symbol="BTC", interval="1h", start="2024-01-01T00:00:00Z")
 
 ## Notes
 
-- Tier limits: Free 7d · Pro 6mo · Business full
+- Tier limits: Free 7d · Pro 14d · Business 31d
 - Call `kwery_limits` to verify history access before large pulls

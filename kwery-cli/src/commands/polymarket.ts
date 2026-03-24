@@ -24,17 +24,21 @@ export function polymarketCommand(program: Command): void {
   pm.command("markets")
     .description("List Polymarket prediction markets")
     .option("-s, --symbol <symbol>", "Filter by symbol: BTC | ETH | SOL | XRP")
-    .option("--active", "Show only active markets")
+    .option("--active", "Show only active (open) markets")
+    .option("--resolved", "Show only resolved markets")
     .option("-l, --limit <n>", "Max rows to return", "50")
     .option("--after <cursor>", "Pagination cursor")
     .option("-f, --format <format>", "Output format: json | table | csv", "json")
     .action(async (opts) => {
       try {
         const client = new KweryClient();
+        let active: boolean | undefined;
+        if (opts.active) active = true;
+        if (opts.resolved) active = false;
         const data = await client.get("/v1/markets", {
           source: "polymarket",
           symbol: opts.symbol,
-          active: opts.active,
+          active,
           limit: Number(opts.limit),
           after: opts.after,
         });
@@ -102,6 +106,8 @@ export function polymarketCommand(program: Command): void {
   pm.command("snapshots <symbol>")
     .description("Fetch historical order book snapshots for Polymarket")
     .option("--market-id <id>", "Market condition_id filter")
+    .option("--include-orderbook", "Include full order book depth per snapshot")
+    .option("--depth <n>", "Order book depth levels (1-50)", "10")
     .option("--start <datetime>", "ISO 8601 start time")
     .option("--end <datetime>", "ISO 8601 end time")
     .option("-l, --limit <n>", "Max rows to return", "100")
@@ -113,6 +119,8 @@ export function polymarketCommand(program: Command): void {
         const data = await client.get("/v1/polymarket/snapshots", {
           symbol,
           market_id: opts.marketId,
+          include_orderbook: opts.includeOrderbook || undefined,
+          depth: opts.includeOrderbook ? Number(opts.depth) : undefined,
           start: opts.start,
           end: opts.end,
           limit: Number(opts.limit),

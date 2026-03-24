@@ -8,7 +8,7 @@ export const binanceTools = [
     description:
       "Fetch OHLCV candle history from Binance spot or futures. " +
       "source='binance' for spot, 'binance_futures' for perpetuals. " +
-      "Tier: Free 14d/15m+ · Pro 60d/5m+ · Business 90d/1s.",
+      "Tier: Free 7d/15m+ · Pro 14d/5m+ · Business 31d/1s.",
     inputSchema: z.object({
       symbol: SymbolSchema,
       interval: IntervalSchema,
@@ -57,7 +57,7 @@ export const binanceTools = [
     name: "binance_flow",
     description:
       "Fetch time-bucketed directional buy/sell pressure from Binance spot. " +
-      "buy_ratio > 0.5 = net buying pressure. Tier: Free 7d · Pro 6mo · Business full.",
+      "buy_ratio > 0.5 = net buying pressure. Tier: Free 7d · Pro 14d · Business 31d.",
     inputSchema: z.object({
       symbol: SymbolSchema,
       interval: z.enum(["5m", "15m", "1h", "4h", "24h"]),
@@ -73,7 +73,7 @@ export const binanceTools = [
     name: "binance_funding",
     description:
       "Fetch perpetual funding rate history from Binance futures. " +
-      "Funding every 8h. Annualized = rate × 3 × 365. Tier: Free 7d · Pro 6mo · Business full.",
+      "Funding every 8h. Annualized = rate × 3 × 365. Tier: Free 7d · Pro 14d · Business 31d.",
     inputSchema: z.object({
       symbol: SymbolSchema,
       ...DateRangeSchema,
@@ -87,7 +87,7 @@ export const binanceTools = [
   {
     name: "binance_oi",
     description:
-      "Fetch open interest history from Binance futures. Tier: Free 7d · Pro 6mo · Business full.",
+      "Fetch open interest history from Binance futures. Tier: Free 7d · Pro 14d · Business 31d.",
     inputSchema: z.object({
       symbol: SymbolSchema,
       interval: IntervalSchema.default("1h"),
@@ -103,7 +103,7 @@ export const binanceTools = [
     name: "binance_liquidations",
     description:
       "Fetch Binance perpetual liquidation events. " +
-      "side='long' = forced sell. side='short' = forced buy. Tier: Free 24h · Pro 6mo · Business full.",
+      "side='long' = forced sell. side='short' = forced buy. Tier: Free 24h · Pro 14d · Business 31d.",
     inputSchema: z.object({
       symbol: SymbolSchema,
       side: z.enum(["long", "short"]).optional(),

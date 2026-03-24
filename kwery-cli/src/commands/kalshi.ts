@@ -10,11 +10,15 @@ export function kalshiCommand(program: Command): void {
   kal.command("markets")
     .description("List active Kalshi binary event markets")
     .option("-s, --symbol <symbol>", "Filter by symbol: BTC | ETH | SOL | XRP")
+    .option("-l, --limit <n>", "Max rows to return", "50")
     .option("-f, --format <format>", "Output format: json | table | csv", "json")
     .action(async (opts) => {
       try {
         const client = new KweryClient();
-        const data = await client.get("/v1/kalshi", { symbol: opts.symbol });
+        const data = await client.get("/v1/kalshi", {
+          symbol: opts.symbol,
+          limit: Number(opts.limit),
+        });
         printOutput(data, opts.format as OutputFormat);
       } catch (err: any) {
         printError(err.message);
@@ -23,20 +27,24 @@ export function kalshiCommand(program: Command): void {
     });
 
   kal.command("prices <symbol>")
-    .description("Fetch probability price history for a Kalshi event market")
+    .description("Fetch probability price history for a Kalshi event market. Prices in cents (0-100).")
     .option("-i, --interval <interval>", "Interval: 5m | 15m | 1h | 4h | 24h", "5m")
+    .option("--include-orderbook", "Include full order book depth per snapshot")
     .option("--start <datetime>", "ISO 8601 start time")
     .option("--end <datetime>", "ISO 8601 end time")
     .option("-l, --limit <n>", "Max rows to return", "100")
+    .option("--offset <n>", "Row offset for pagination (use instead of --after)", "0")
     .option("-f, --format <format>", "Output format: json | table | csv", "json")
     .action(async (symbol, opts) => {
       try {
         const client = new KweryClient();
         const data = await client.get(`/v1/kalshi/${symbol}`, {
           interval: opts.interval,
-          start_time: opts.start,
-          end_time: opts.end,
+          include_orderbook: opts.includeOrderbook || undefined,
+          start: opts.start,
+          end: opts.end,
           limit: Number(opts.limit),
+          offset: Number(opts.offset),
         });
         printOutput(data, opts.format as OutputFormat);
       } catch (err: any) {

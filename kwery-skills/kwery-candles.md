@@ -39,5 +39,5 @@ polymarket_candles(symbol="BTC", interval="1h", token_id="<clob_token_up>")
 ## Notes
 
 - Always pass `token_id` to `polymarket_candles` for single-series backtesting
-- Tier limits: Free 14d/15m+ · Pro 60d/5m+ · Business 90d/1s
+- Tier limits: Free 7d/15m+ · Pro 14d/5m+ · Business 31d/1s
 - Call `kwery_limits` first for large pulls to verify plan access

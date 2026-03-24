@@ -1,15 +1,12 @@
+import { getApiKey } from "./config.js";
+
 const BASE_URL = process.env.KWERY_BASE_URL ?? "https://kwery-api.com";
 
 export class KweryClient {
   private apiKey: string;
 
   constructor(apiKey?: string) {
-    const key = apiKey ?? process.env.KWERY_API_KEY;
-    if (!key) throw new Error(
-      "KWERY_API_KEY is required. Set it as an environment variable.\n" +
-      "Get a key at https://kwery.xyz"
-    );
-    this.apiKey = key;
+    this.apiKey = apiKey ?? getApiKey();
   }
 
   async get<T = unknown>(
@@ -27,7 +24,7 @@ export class KweryClient {
     const res = await fetch(url.toString(), {
       headers: {
         "X-API-Key": this.apiKey,
-        "User-Agent": "kwery-cli/1.0.0",
+        "User-Agent": "kwery-cli/1.0.1",
       },
     });
 

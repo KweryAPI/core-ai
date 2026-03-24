@@ -30,10 +30,10 @@ echo "==> Building..."
 pnpm build
 
 echo "==> MCP unit + integration tests..."
-cd kwery-mcp && pnpm vitest run && cd ..
+(cd kwery-mcp && pnpm vitest run)
 
 echo "==> CLI unit + integration tests..."
-cd kwery-cli && pnpm vitest run && cd ..
+(cd kwery-cli && pnpm vitest run)
 
 echo "==> Repo structure tests..."
 pnpm test:structure
