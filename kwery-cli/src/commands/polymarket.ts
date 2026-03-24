@@ -103,6 +103,34 @@ export function polymarketCommand(program: Command): void {
       }
     });
 
+  pm.command("orderbook <symbol>")
+    .description("Fetch Polymarket CLOB order book history with full bid/ask depth")
+    .option("--depth <n>", "Order book depth levels (1-50)", "10")
+    .option("--include-diffs", "Include incremental book updates")
+    .option("--start <datetime>", "ISO 8601 start time")
+    .option("--end <datetime>", "ISO 8601 end time")
+    .option("-l, --limit <n>", "Max rows to return", "100")
+    .option("--after <cursor>", "Pagination cursor")
+    .option("-f, --format <format>", "Output format: json | table | csv", "json")
+    .action(async (symbol, opts) => {
+      try {
+        const client = new KweryClient();
+        const data = await client.get("/v1/polymarket/orderbook", {
+          symbol,
+          depth: Number(opts.depth),
+          include_diffs: opts.includeDiffs || undefined,
+          start: opts.start,
+          end: opts.end,
+          limit: Number(opts.limit),
+          after: opts.after,
+        });
+        printOutput(data, opts.format as OutputFormat);
+      } catch (err: any) {
+        printError(err.message);
+        process.exit(1);
+      }
+    });
+
   pm.command("snapshots <symbol>")
     .description("Fetch historical order book snapshots for Polymarket")
     .option("--market-id <id>", "Market condition_id filter")

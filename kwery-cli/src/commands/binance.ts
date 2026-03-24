@@ -7,6 +7,34 @@ export function binanceCommand(program: Command): void {
     .command("binance")
     .description("Binance spot and futures market data");
 
+  bn.command("spot-markets")
+    .description("List all tracked Binance spot markets")
+    .option("-f, --format <format>", "Output format: json | table | csv", "json")
+    .action(async (opts) => {
+      try {
+        const client = new KweryClient();
+        const data = await client.get("/v1/binance/spot");
+        printOutput(data, opts.format as OutputFormat);
+      } catch (err: any) {
+        printError(err.message);
+        process.exit(1);
+      }
+    });
+
+  bn.command("futures-markets")
+    .description("List all tracked Binance perpetual futures markets")
+    .option("-f, --format <format>", "Output format: json | table | csv", "json")
+    .action(async (opts) => {
+      try {
+        const client = new KweryClient();
+        const data = await client.get("/v1/binance/futures");
+        printOutput(data, opts.format as OutputFormat);
+      } catch (err: any) {
+        printError(err.message);
+        process.exit(1);
+      }
+    });
+
   bn.command("candles <symbol> <interval>")
     .description("Fetch OHLCV candle history from Binance spot or futures")
     .option("--source <source>", "binance | binance_futures", "binance")

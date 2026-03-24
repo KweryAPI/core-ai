@@ -89,8 +89,12 @@ spot = requests.get("/v1/candles", params={
 ## MCP Tools
 Use these Kwery MCP tools for signal construction:
 - `polymarket_candles` — Polymarket probability price series
+- `polymarket_orderbook` — bid/ask depth history for spread and imbalance signals
 - `kalshi_prices` — Kalshi price history (normalize: `/ 100`)
+- `kalshi_orderbook` — Kalshi order book depth history
 - `binance_candles` — Binance spot/futures OHLCV
+- `binance_spot_markets` — list all tracked Binance spot symbols
+- `binance_futures_markets` — list all tracked Binance perpetual futures symbols
 - `binance_flow` — directional buy/sell pressure
 - `binance_funding` — Binance perpetual funding rates
 - `binance_liquidations` — liquidation event feed

@@ -146,5 +146,5 @@ describe.skipIf(SKIP)("Smoke — HTTP client against real API", () => {
     await expect(badClient.get("/v1/limits")).rejects.toThrow(
       "Invalid or missing API key"
     );
-  });
+  }, 15000);
 });

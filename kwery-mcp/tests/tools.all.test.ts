@@ -335,6 +335,46 @@ describe("binance_liquidations — route", () => {
   });
 });
 
+// ─── New tools added in v1.0.3 ───────────────────────────────────────────────
+
+describe("polymarket_orderbook — route", () => {
+  it("calls GET /v1/polymarket/orderbook", async () => {
+    const url = await callToolAndCaptureUrl(
+      "polymarket_orderbook",
+      { symbol: "BTC" },
+      "/v1/polymarket/orderbook"
+    );
+    expect(url).toContain("/v1/polymarket/orderbook");
+    expect(url).toContain("symbol=BTC");
+  });
+});
+
+describe("binance_spot_markets — route", () => {
+  it("calls GET /v1/binance/spot", async () => {
+    let called = false;
+    server.use(http.get(`${BASE}/v1/binance/spot`, () => {
+      called = true;
+      return HttpResponse.json({ markets: [] });
+    }));
+    const tool = ALL_TOOLS.find(t => t.name === "binance_spot_markets")!;
+    await (tool as any).handler({}, client);
+    expect(called).toBe(true);
+  });
+});
+
+describe("binance_futures_markets — route", () => {
+  it("calls GET /v1/binance/futures", async () => {
+    let called = false;
+    server.use(http.get(`${BASE}/v1/binance/futures`, () => {
+      called = true;
+      return HttpResponse.json({ markets: [] });
+    }));
+    const tool = ALL_TOOLS.find(t => t.name === "binance_futures_markets")!;
+    await (tool as any).handler({}, client);
+    expect(called).toBe(true);
+  });
+});
+
 // ─── All tools registered ─────────────────────────────────────────────────────
 
 describe("ALL_TOOLS completeness", () => {
@@ -343,17 +383,19 @@ describe("ALL_TOOLS completeness", () => {
     "kwery_markets", "kwery_market",
     "polymarket_markets", "polymarket_market", "polymarket_candles",
     "polymarket_trades", "polymarket_snapshots", "polymarket_snapshot_at",
+    "polymarket_orderbook",
     "kalshi_markets", "kalshi_prices", "kalshi_orderbook",
     "kalshi_snapshots", "kalshi_snapshot_at",
     "hyperliquid_markets", "hyperliquid_candles", "hyperliquid_trades",
     "hyperliquid_funding", "hyperliquid_oi", "hyperliquid_snapshots",
     "hyperliquid_snapshot_at",
+    "binance_spot_markets", "binance_futures_markets",
     "binance_candles", "chainlink_candles", "binance_ticker",
     "binance_flow", "binance_funding", "binance_oi", "binance_liquidations",
   ];
 
-  it("total tool count is 30", () => {
-    expect(ALL_TOOLS.length).toBe(30);
+  it("total tool count is 33", () => {
+    expect(ALL_TOOLS.length).toBe(33);
   });
 
   EXPECTED_TOOLS.forEach((name) => {

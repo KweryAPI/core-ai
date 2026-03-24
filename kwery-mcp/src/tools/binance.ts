@@ -4,6 +4,22 @@ import { SymbolSchema, IntervalSchema, DateRangeSchema } from "../types.js";
 
 export const binanceTools = [
   {
+    name: "binance_spot_markets",
+    description: "List all tracked Binance spot markets and their available symbols. Cost: 25 credits.",
+    inputSchema: z.object({}),
+    handler: async (_params: {}, client: KweryClient) => {
+      return client.get("/v1/binance/spot");
+    },
+  },
+  {
+    name: "binance_futures_markets",
+    description: "List all tracked Binance perpetual futures markets and their available symbols. Cost: 25 credits.",
+    inputSchema: z.object({}),
+    handler: async (_params: {}, client: KweryClient) => {
+      return client.get("/v1/binance/futures");
+    },
+  },
+  {
     name: "binance_candles",
     description:
       "Fetch OHLCV candle history from Binance spot or futures. " +
@@ -73,7 +89,7 @@ export const binanceTools = [
     name: "binance_funding",
     description:
       "Fetch perpetual funding rate history from Binance futures. " +
-      "Funding every 8h. Annualized = rate × 3 × 365. Tier: Free 7d · Pro 14d · Business 31d.",
+      "Funding every 8h. Annualized = rate * 3 * 365. Tier: Free 7d · Pro 14d · Business 31d.",
     inputSchema: z.object({
       symbol: SymbolSchema,
       ...DateRangeSchema,

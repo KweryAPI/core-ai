@@ -58,7 +58,7 @@ export const polymarketTools = [
     name: "polymarket_trades",
     description:
       "Fetch individual trade ticks from Polymarket CLOB. " +
-      "Tier: Free 14d · Pro 30d · Business full.",
+      "Tier: Free 7d · Pro 14d · Business 31d.",
     inputSchema: z.object({
       symbol: SymbolSchema,
       ...DateRangeSchema,
@@ -73,7 +73,7 @@ export const polymarketTools = [
     name: "polymarket_snapshots",
     description:
       "Fetch historical order book snapshots for Polymarket. " +
-      "Tier: Free 7d · Pro 30d · Business full.",
+      "Tier: Free 7d · Pro 14d · Business 31d.",
     inputSchema: z.object({
       symbol: SymbolSchema,
       interval: z.string().optional(),
@@ -104,6 +104,25 @@ export const polymarketTools = [
     }),
     handler: async (params: any, client: KweryClient) => {
       return client.get("/v1/polymarket/snapshots/at", params);
+    },
+  },
+  {
+    name: "polymarket_orderbook",
+    description:
+      "Fetch paginated Polymarket CLOB order book history. " +
+      "Returns full bid/ask depth at configurable depth levels with optional diffs. " +
+      "Use for slippage estimation, spread analysis, and book depth trends. " +
+      "Tier: Free 7d · Pro 14d · Business 31d. Cost: 50 base + 4/row.",
+    inputSchema: z.object({
+      symbol: SymbolSchema,
+      depth: z.number().int().min(1).max(50).default(10),
+      include_diffs: z.boolean().default(false),
+      ...DateRangeSchema,
+      limit: z.number().int().min(1).max(1000).default(100),
+      after: z.string().optional(),
+    }),
+    handler: async (params: any, client: KweryClient) => {
+      return client.get("/v1/polymarket/orderbook", params);
     },
   },
 ];

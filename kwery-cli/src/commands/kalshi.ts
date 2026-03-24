@@ -33,16 +33,17 @@ export function kalshiCommand(program: Command): void {
     .option("--start <datetime>", "ISO 8601 start time")
     .option("--end <datetime>", "ISO 8601 end time")
     .option("-l, --limit <n>", "Max rows to return", "100")
-    .option("--offset <n>", "Row offset for pagination (use instead of --after)", "0")
+    .option("--offset <n>", "Row offset for pagination", "0")
     .option("-f, --format <format>", "Output format: json | table | csv", "json")
     .action(async (symbol, opts) => {
       try {
         const client = new KweryClient();
+        // API uses start_time/end_time for /v1/kalshi/{symbol}
         const data = await client.get(`/v1/kalshi/${symbol}`, {
           interval: opts.interval,
           include_orderbook: opts.includeOrderbook || undefined,
-          start: opts.start,
-          end: opts.end,
+          start_time: opts.start,
+          end_time: opts.end,
           limit: Number(opts.limit),
           offset: Number(opts.offset),
         });

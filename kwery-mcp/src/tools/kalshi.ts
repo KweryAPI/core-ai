@@ -21,8 +21,9 @@ export const kalshiTools = [
     description:
       "Fetch probability price history for a Kalshi event market. " +
       "Includes yes_bid, yes_ask, no_bid, no_ask, spread, mid_price, imbalance. " +
-      "Prices in cents (0-100). imbalance > 0.5 = more YES liquidity. " +
-      "Pagination: use offset (not after cursor) to page through results. " +
+      "Prices in cents (0-100) — divide by 100 to normalize. " +
+      "imbalance > 0.5 = more YES liquidity = bullish signal. " +
+      "Pagination uses offset (not cursor). " +
       "Tier: Free 7d · Pro 14d · Business 31d. Cost: 50 base + 5/row.",
     inputSchema: z.object({
       symbol: SymbolSchema,
@@ -33,7 +34,13 @@ export const kalshiTools = [
       offset: z.number().int().min(0).default(0),
     }),
     handler: async (params: any, client: KweryClient) => {
-      return client.get(`/v1/kalshi/${params.symbol}`, params);
+      const { symbol, start, end, ...rest } = params;
+      // /v1/kalshi/{symbol} uses start_time/end_time (not start/end)
+      return client.get(`/v1/kalshi/${symbol}`, {
+        ...rest,
+        ...(start !== undefined && { start_time: start }),
+        ...(end !== undefined && { end_time: end }),
+      });
     },
   },
   {

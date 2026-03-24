@@ -112,3 +112,7 @@ Use these Kwery MCP tools for prediction market research:
 - `polymarket_markets` — list Polymarket markets with resolution data
 - `polymarket_market` — fetch a single market by slug or condition_id
 - `polymarket_candles` — OHLCV probability series for a market
+- `polymarket_orderbook` — paginated bid/ask depth history (spread, slippage, imbalance)
+- `kalshi_orderbook` — Kalshi order book depth history
+- `binance_spot_markets` — list all tracked Binance spot symbols
+- `binance_futures_markets` — list all tracked Binance perpetual futures symbols

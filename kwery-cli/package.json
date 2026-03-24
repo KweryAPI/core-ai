@@ -1,6 +1,6 @@
 {
   "name": "kwery-cli",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "CLI for Kwery — unified crypto and prediction market data across Polymarket, Kalshi, Hyperliquid, Binance, and Chainlink.",
   "type": "module",
   "bin": {

@@ -1,0 +1,54 @@
+---
+description: Rules for comparing price action and signals across Polymarket, Kalshi, Binance, Hyperliquid, and Chainlink using Kwery MCP tools.
+globs: []
+alwaysApply: false
+---
+
+# Kwery Cross-Platform Comparison
+
+## Tool Matrix
+
+| Platform | Candles/Prices | Trades | Order Book | Markets List |
+|----------|----------------|--------|------------|--------------|
+| Polymarket | `polymarket_candles` | `polymarket_trades` | `polymarket_orderbook` | `polymarket_markets` |
+| Kalshi | `kalshi_prices` | - | `kalshi_orderbook` | `kalshi_markets` |
+| Binance Spot | `binance_candles` | - | - | `binance_spot_markets` |
+| Binance Futures | `binance_candles` (source=binance_futures) | - | - | `binance_futures_markets` |
+| Hyperliquid | `hyperliquid_candles` | `hyperliquid_trades` | - | `hyperliquid_markets` |
+| Chainlink | `chainlink_candles` | - | - | - |
+
+## Key Workflows
+
+### Oracle lag (Chainlink vs Binance)
+```
+chainlink_candles(symbol="BTC", interval="1h", limit=168)
+binance_candles(symbol="BTC", interval="1h", limit=168)
+```
+Lag in Chainlink feeds means prediction markets may misprice at settlement.
+
+### Basis and funding arbitrage
+```
+binance_candles(symbol="BTC", interval="1h", source="binance")
+binance_candles(symbol="BTC", interval="1h", source="binance_futures")
+binance_funding(symbol="BTC", limit=500)
+```
+
+### Prediction market vs derivatives sentiment
+```
+polymarket_candles(symbol="BTC", interval="1h", token_id="<clob_token_up>")
+binance_funding(symbol="BTC", limit=500)
+binance_oi(symbol="BTC", interval="1h", limit=500)
+```
+Convergence = high conviction. Divergence = potential mean-reversion trade.
+
+### Hyperliquid vs Binance premium
+```
+hyperliquid_candles(symbol="BTC", interval="1h", limit=168)
+binance_candles(symbol="BTC", interval="1h", source="binance_futures", limit=168)
+```
+
+## Notes
+
+- Always use the same `symbol`, `interval`, and time window across platforms
+- Use `binance_spot_markets` / `binance_futures_markets` to discover available tickers
+- Free 7d - Pro 14d - Business 31d across all tools

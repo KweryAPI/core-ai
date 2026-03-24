@@ -1,0 +1,47 @@
+---
+description: Rules for analyzing order book depth, spread, and liquidity on Polymarket and Kalshi using Kwery MCP tools.
+globs: []
+alwaysApply: false
+---
+
+# Kwery Order Book Analysis
+
+## Available Tools
+
+| Tool | Description |
+|------|-------------|
+| `polymarket_orderbook` | Polymarket CLOB bid/ask depth history |
+| `kalshi_orderbook` | Kalshi binary market order book history |
+| `polymarket_snapshots` | Point-in-time Polymarket book snapshots |
+| `kalshi_snapshots` | Point-in-time Kalshi book snapshots |
+
+## Spread Analysis
+
+`spread = best_ask - best_bid`
+`spread_pct = spread / mid_price * 100`
+
+- <0.5% = liquid, safe for large orders
+- 0.5-2% = moderate, use limit orders
+- >2% = illiquid, expect significant slippage
+
+## Depth Imbalance Signal
+
+Sum bid sizes vs ask sizes across top N levels:
+`imbalance = bid_depth / (bid_depth + ask_depth)`
+
+- >0.6 = more buy-side pressure -> bullish signal
+- <0.4 = more sell-side pressure -> bearish signal
+- 0.4-0.6 = balanced book, no directional bias
+
+## Slippage Estimation
+
+Use `depth=50` to walk the full book for large-order slippage:
+```
+polymarket_orderbook(symbol="BTC", depth=50, limit=1)
+```
+Walk bid/ask levels until cumulative size >= order size, then compute VWAP fill price.
+
+## Tier Limits
+
+Free 7d - Pro 14d - Business 31d
+Cost: 50 base + 4/row (polymarket), 50 base + 3/row (kalshi)

@@ -25,8 +25,13 @@ export const hyperliquidTools = [
       after: z.string().optional(),
     }),
     handler: async (params: any, client: KweryClient) => {
-      const { symbol, ...rest } = params;
-      return client.get(`/v1/hyperliquid/${symbol}`, rest);
+      const { symbol, start, end, ...rest } = params;
+      // /v1/hyperliquid/{symbol} uses start_time/end_time (not start/end)
+      return client.get(`/v1/hyperliquid/${symbol}`, {
+        ...rest,
+        ...(start !== undefined && { start_time: start }),
+        ...(end !== undefined && { end_time: end }),
+      });
     },
   },
   {

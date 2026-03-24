@@ -32,10 +32,11 @@ export function hyperliquidCommand(program: Command): void {
     .action(async (symbol, opts) => {
       try {
         const client = new KweryClient();
+        // API uses start_time/end_time for /v1/hyperliquid/{symbol}
         const data = await client.get(`/v1/hyperliquid/${symbol}`, {
           interval: opts.interval,
-          start: opts.start,
-          end: opts.end,
+          start_time: opts.start,
+          end_time: opts.end,
           limit: Number(opts.limit),
           after: opts.after,
         });
@@ -151,10 +152,7 @@ export function hyperliquidCommand(program: Command): void {
     .action(async (symbol, time, opts) => {
       try {
         const client = new KweryClient();
-        const data = await client.get("/v1/hyperliquid/snapshots/at", {
-          symbol,
-          time,
-        });
+        const data = await client.get("/v1/hyperliquid/snapshots/at", { symbol, time });
         printOutput(data, opts.format as OutputFormat);
       } catch (err: any) {
         printError(err.message);
